@@ -9,7 +9,25 @@ import SwiftUI
 
 struct Card5: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            
+            RoundedRectangle(cornerRadius: 0)
+                .fill(Color.indigo)
+                //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+                .frame(width: 343, height: 200)
+                .padding()
+            HStack{
+              Text("hello")
+                Divider()
+                    .frame(width: 3 , height: 160)
+                    .overlay(.white)
+                Text("welcome")
+            }
+           
+                
+           
+            
+        }
     }
 }
 

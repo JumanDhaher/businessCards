@@ -9,7 +9,20 @@ import SwiftUI
 
 struct Card4: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            RoundedRectangle(cornerRadius: 0)
+                .fill(Color.darkgray)
+                //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+                .frame(width: 343, height: 200)
+                .padding()
+            Rectangle()
+                .fill(Color.mint)
+                .frame(width: 140, height: 200)
+                .padding(.leading, -172)
+            
+           
+            
+        }   
     }
 }
 
