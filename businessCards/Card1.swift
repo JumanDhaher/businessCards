@@ -46,6 +46,7 @@ struct Trapezoid: Shape {
 struct Card1: View {
   @State var card: BusinessCards
     
+    @Binding var colorSelect: Color
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 0)
@@ -58,7 +59,7 @@ struct Card1: View {
                 Text(card.descriptions)
             }
             Trapezoid()
-                .fill(.gray)
+                .fill(colorSelect)
                 .frame(width: 260, height: 30)
                 .padding(.top, 150)
                 .padding(.leading, 50)
@@ -73,15 +74,21 @@ struct Card1: View {
                 .padding(.leading, -140)
                 .padding(.top, -100)
             Rectangle()
-                .fill(.gray)
+                .fill(colorSelect)
                 .frame(width: 150, height: 20)
                 .padding(.leading, 190)
                 .padding(.top, -95)
             
+
+            
         }
-        
+
+
         
     }
     
 }
 
+//#Preview {
+//    Card1(colorSelect: .red)
+//}

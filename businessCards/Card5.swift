@@ -9,11 +9,12 @@ import SwiftUI
 
 struct Card5: View {
     @State var card: BusinessCards
+    @Binding var colorSelect: Color
     var body: some View {
         ZStack{
             
             RoundedRectangle(cornerRadius: 0)
-                .fill(Color.indigo)
+                .fill(colorSelect)
                 //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
                 .frame(width: 343, height: 200)
                 .padding()

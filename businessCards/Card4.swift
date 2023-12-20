@@ -10,6 +10,7 @@ import SwiftUI
 struct Card4: View {
     @State var card: BusinessCards
 
+    @Binding var colorSelect: Color
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 0)
@@ -18,7 +19,7 @@ struct Card4: View {
                 .frame(width: 343, height: 200)
                 .padding()
             Rectangle()
-                .fill(Color.mint)
+                .fill(colorSelect)
                 .frame(width: 140, height: 200)
                 .padding(.leading, -172)
             
@@ -27,3 +28,7 @@ struct Card4: View {
         }   
     }
 }
+
+//#Preview {
+//    Card4()
+//}
