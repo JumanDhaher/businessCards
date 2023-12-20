@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Card5: View {
+    @State var card: BusinessCards
     var body: some View {
         ZStack{
             
@@ -17,11 +18,11 @@ struct Card5: View {
                 .frame(width: 343, height: 200)
                 .padding()
             HStack{
-              Text("hello")
+                Text(card.name)
                 Divider()
                     .frame(width: 3 , height: 160)
                     .overlay(.white)
-                Text("welcome")
+                Text(card.address)
             }
            
                 
@@ -31,6 +32,4 @@ struct Card5: View {
     }
 }
 
-#Preview {
-    Card5()
-}
+

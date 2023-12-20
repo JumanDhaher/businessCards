@@ -8,25 +8,31 @@
 import SwiftUI
 
 struct CreateCard: View {
-    @State private var info: [CardInformation] = []
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+     
     @State private var showImagePicker = false
-    
-    @State var Name: String = ""
-    @State var Email: String = ""
-    @State var PhoneNumber: String = ""
-    @State var Role: String = ""
-    @State var Address: String = ""
-    @State var Description: String = ""
-    @State var SocialMedia: String = ""
-    @State var Logo: String = ""
-    
+    @State private var name: String = ""
+    @State private var email: String = ""
+    @State private var phoneNumber: String = ""
+    @State private var role: String = ""
+    @State private var address: String = ""
+    @State private var descriptions: String = ""
+    @State private var logo: String = ""
+ 
+    @State private var instagram: String = ""
+    @State private var x: String = ""
+    @State private var website: String = ""
+
     var body: some View {
-        NavigationStack{
             ScrollView{
                 VStack(alignment: .leading, spacing: 15){
-                    Text("Name")
+                    HStack{
+                        Text("Name")
+                        Text("*").foregroundColor(.red)
+                    }
                         .font(.title2)
-                    TextField("Enter your business name", text: $Name)
+                    TextField("Enter your business name", text: $name)
                         .padding(.leading)
                         .frame(width: 370, height: 50)
                         .overlay(RoundedRectangle(cornerRadius: 6.0).strokeBorder(Color.gray, style: StrokeStyle(lineWidth: 1.0)))
@@ -34,7 +40,7 @@ struct CreateCard: View {
                     
                     Text("Email")
                         .font(.title2)
-                    TextField("Enter your email", text: $Email)
+                    TextField("Enter your email", text: $email)
                         .padding(.leading)
                         .frame(width: 370, height: 50)
                         .overlay(RoundedRectangle(cornerRadius: 6.0).strokeBorder(Color.gray, style: StrokeStyle(lineWidth: 1.0)))
@@ -42,7 +48,7 @@ struct CreateCard: View {
                     
                     Text("PhoneNumber")
                         .font(.title2)
-                    TextField("Enter your phone number", text: $PhoneNumber)
+                    TextField("Enter your phone number", text: $phoneNumber)
                         .padding(.leading)
                         .frame(width: 370, height: 50)
                         .overlay(RoundedRectangle(cornerRadius: 6.0).strokeBorder(Color.gray, style: StrokeStyle(lineWidth: 1.0)))
@@ -50,40 +56,49 @@ struct CreateCard: View {
                     
                     Text("Role")
                         .font(.title2)
-                    TextField("Enter your role", text: $Role)
+                    TextField("Enter your role", text: $role)
                         .padding(.leading)
                         .frame(width: 370, height: 50)
                         .overlay(RoundedRectangle(cornerRadius: 6.0).strokeBorder(Color.gray, style: StrokeStyle(lineWidth: 1.0)))
                         .opacity(0.6)
                     Text("Address")
                         .font(.title2)
-                    TextField("Enter your business address", text: $Address)
+                    TextField("Enter your business address", text: $address)
                         .padding(.leading)
                         .frame(width: 370, height: 50)
                         .overlay(RoundedRectangle(cornerRadius: 6.0).strokeBorder(Color.gray, style: StrokeStyle(lineWidth: 1.0)))
                         .opacity(0.6)
                     Text("Description")
                         .font(.title2)
-                    TextField("Enter the description", text: $Description)
+                    TextField("Enter the description", text: $descriptions)
+                        .padding(.leading)
+                        .frame(width: 370, height: 50)
+                        .overlay(RoundedRectangle(cornerRadius: 6.0).strokeBorder(Color.gray, style: StrokeStyle(lineWidth: 1.0)))
+                        .opacity(0.6)
+                                        
+                    Text("Instagram")
+                        .font(.title2)
+                    TextField("Enter the Instagram", text: $instagram)
+                        .padding(.leading)
+                        .frame(width: 370, height: 50)
+                        .overlay(RoundedRectangle(cornerRadius: 6.0).strokeBorder(Color.gray, style: StrokeStyle(lineWidth: 1.0)))
+                        .opacity(0.6)
+
+                    Text("X")
+                        .font(.title2)
+                    TextField("Enter the x", text: $x)
                         .padding(.leading)
                         .frame(width: 370, height: 50)
                         .overlay(RoundedRectangle(cornerRadius: 6.0).strokeBorder(Color.gray, style: StrokeStyle(lineWidth: 1.0)))
                         .opacity(0.6)
                     
-                    HStack {
-                        Text("SocialMedia")
-                            .font(.title2)
-                        Spacer()
-                        Picker("SocialMedia", selection: $SocialMedia) {
-                            Text("Instagram").tag("Instagram")
-                            Text("Snapchat").tag("Snapchat")
-                            Text("x").tag("x")
-                            Text("LinkedIn").tag("LinkedIn")
-                            Text("Web Site").tag("Website")
-                        }
-                        .accentColor(.darkpurple)
-                    }
-                    .padding(.vertical, 8)
+                    Text("Website")
+                        .font(.title2)
+                    TextField("Enter the website", text: $website)
+                        .padding(.leading)
+                        .frame(width: 370, height: 50)
+                        .overlay(RoundedRectangle(cornerRadius: 6.0).strokeBorder(Color.gray, style: StrokeStyle(lineWidth: 1.0)))
+                        .opacity(0.6)
                     
                     Text("Brand Logo")
                         .font(.title2)
@@ -101,17 +116,31 @@ struct CreateCard: View {
                          .opacity(0.7)
                          .cornerRadius(8)
                          .foregroundColor(.white)
+                    
+                    Button(action: {
+                            let card = BusinessCards(name: name, email: email, phoneNumber: phoneNumber, role: role, address: address, descriptions: descriptions,
+                                instagram: instagram,x: x,
+                                website: website, logo: logo)
+                                modelContext.insert(card)
+                                   do {
+                                       try modelContext.save()
+                                       presentationMode.wrappedValue.dismiss()
+                                   } catch {
+                                       print(error.localizedDescription)
+                                   }
+                               }, label: {
+                                   Text("Save").frame(width: 355,height: 40, alignment: .center).foregroundColor(.white).background(.darkpurple).cornerRadius(12).shadow(radius: 20, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/,y: 10)
+                               })
+                    
                 }
                 .padding()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity).background(.back1)
-            
             .navigationTitle("Create Card")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
+        
         }
     }
-}
+
 #Preview {
     CreateCard()
 }

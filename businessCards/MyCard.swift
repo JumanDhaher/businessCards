@@ -6,38 +6,57 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MyCard: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \BusinessCards.id, order: .forward, animation: .smooth) var cards: [BusinessCards]
+      
     var body: some View {
-        NavigationView {
-            ScrollView{
-            VStack{
-                Card1()
-                Card2()
-                Card3()
-                Card4()
-                Card5()
+        ScrollView{
+            if cards.isEmpty {
+                NavigationLink(destination: CreateCard(), label:{
+                    Text("Press '+' to add new cards").foregroundColor(.darkpurple)
+                })
+            }else {
+                ForEach(cards ,id: \.self) {
+                    card in
+                    NavigationLink {
+                        EditCard(card: card)
+                    } label: {
+                        ZStack(alignment: .leading) {
+                                Card5(card: card)
+                                Button("Delete", role: .destructive) {
+                                    modelContext.delete(card)
+                                }.offset(x: 290, y: 80)
+                            
+                        }
+                    } }
+                /* VStack{
+                 Card1()
+                 Card2()
+                 Card3()
+                 Card4()
+                 Card5()
+                 }*/
+              
             }
-        }
-            .frame(maxWidth: .infinity, maxHeight: .infinity).background(.back1)
-            
+        } .frame(maxWidth: .infinity, maxHeight: .infinity).background(.back1)
             .navigationTitle("My Card")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        // Add your action here
-                    }) {
+                    NavigationLink {
+                        CreateCard()
+                    } label: {
                         Image(systemName: "plus.app")
                             .foregroundColor(.darkpurple)
                     }
                 }
             }
-              }
     }
 }
 
 #Preview {
     MyCard()
 }
+

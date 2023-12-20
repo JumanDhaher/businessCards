@@ -8,10 +8,14 @@
 import SwiftUI
 
 @main
-struct businessCardsApp: App {
+struct ContentView: App {
+
     var body: some Scene {
         WindowGroup {
-            MyCard()
-        }
+        NavigationStack {
+           MyCard()
+          }
+        }.modelContainer(for: [BusinessCards.self])
     }
 }
+
