@@ -31,6 +31,8 @@ struct Trapezoid1: Shape {
     }
 }
 struct Card2: View {
+    @State var card: BusinessCards
+    
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 0)
@@ -60,6 +62,3 @@ struct Card2: View {
     }
 }
 
-#Preview {
-    Card2()
-}

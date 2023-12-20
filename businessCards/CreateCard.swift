@@ -118,7 +118,10 @@ struct CreateCard: View {
                          .foregroundColor(.white)
                     
                     Button(action: {
-                            let card = BusinessCards(name: name, email: email, phoneNumber: phoneNumber, role: role, address: address, descriptions: descriptions,
+                            let card = BusinessCards(
+                                cardDesginID:1,
+                                cardColor: "",
+                                name: name, email: email, phoneNumber: phoneNumber, role: role, address: address, descriptions: descriptions,
                                 instagram: instagram,x: x,
                                 website: website, logo: logo)
                                 modelContext.insert(card)

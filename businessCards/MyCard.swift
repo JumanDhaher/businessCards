@@ -25,10 +25,24 @@ struct MyCard: View {
                         EditCard(card: card)
                     } label: {
                         ZStack(alignment: .leading) {
+                            if(card.cardDesginID == 1){
+                               Card1(card: card)
+                                    .frame(width: 343, height: 200)
+                                    .padding()
+                            }else if(card.cardDesginID == 2){
+                                Card2(card: card)
+                                    .frame(width: 343, height: 200)
+                                    .padding()
+                            }else if(card.cardDesginID == 3){
+                                Card3(card: card)
+                            }else if(card.cardDesginID == 4){
+                                Card4(card: card)
+                            }else if(card.cardDesginID == 5){
                                 Card5(card: card)
-                                Button("Delete", role: .destructive) {
-                                    modelContext.delete(card)
-                                }.offset(x: 290, y: 80)
+                            }
+                            Button("Delete", role: .destructive) {
+                                modelContext.delete(card)
+                            }.offset(x: 290, y: 80)
                             
                         }
                     } }

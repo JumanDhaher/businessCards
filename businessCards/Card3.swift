@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Card3: View {
+    @State var card: BusinessCards
+
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 0)
@@ -26,6 +28,4 @@ struct Card3: View {
     }
 }
 
-#Preview {
-    Card3()
-}
+
