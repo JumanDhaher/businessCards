@@ -16,8 +16,8 @@ class BusinessCards {
     var instagram : String
     var x: String
     var website: String
-    var logo: String
-    
+    @Attribute(.externalStorage, .allowsCloudEncryption) var logo: Data?
+
     
     init(
          cardDesginID: Int,
@@ -31,7 +31,7 @@ class BusinessCards {
          instagram: String,
          x: String,
          website: String,
-         logo: String
+         logo: Data?
     ) {
         self.id = UUID()
         self.cardDesginID = cardDesginID

@@ -19,8 +19,7 @@ struct CreateCard: View {
     @State private var role: String = ""
     @State private var address: String = ""
     @State private var descriptions: String = ""
-    @State private var logo: String = ""
- 
+    @State private var logo: Data? = nil
     @State private var instagram: String = ""
     @State private var x: String = ""
     @State private var website: String = ""
@@ -129,6 +128,8 @@ struct CreateCard: View {
                         PhotosPicker(selection: $selecetedPhoto, matching: .images, photoLibrary: .shared()){
                             Label("Add image", systemImage: "photo")
                         }
+                        
+            
 //                        if selectedPhotoData != nil{
 //                            Button(role: .destructive){
 //                                withAnimation{
