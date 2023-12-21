@@ -46,14 +46,6 @@ struct MyCard: View {
                             
                         }
                     } }
-                /* VStack{
-                 Card1()
-                 Card2()
-                 Card3()
-                 Card4()
-                 Card5()
-                 }*/
-              
             }
         } .frame(maxWidth: .infinity, maxHeight: .infinity).background(.back1)
             .navigationTitle("My Card")

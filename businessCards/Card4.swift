@@ -10,8 +10,7 @@ import SwiftUI
 struct Card4: View {
     @State var card: BusinessCards
 
-    @Binding var colorSelect: Color
-    var body: some View {
+    Color(card.cardColor)    var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 0)
                 .fill(Color.darkgray)
@@ -19,7 +18,7 @@ struct Card4: View {
                 .frame(width: 343, height: 200)
                 .padding()
             Rectangle()
-                .fill(colorSelect)
+                .fill(Color(card.cardColor))
                 .frame(width: 140, height: 200)
                 .padding(.leading, -172)
             
