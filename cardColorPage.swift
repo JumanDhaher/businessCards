@@ -110,6 +110,6 @@ struct CardColorPage: View {
 }
 
 
-var cardExample = BusinessCards(cardDesginID: 1, cardColor:"darkpurple" , name: "name", email: "", phoneNumber: "", role: "", address: "", descriptions: "", instagram: "", x: "", website: "", logo: "")
+//var cardExample = BusinessCards(cardDesginID: 1, cardColor:"darkpurple" , name: "name", email: "", phoneNumber: "", role: "", address: "", descriptions: "", instagram: "", x: "", website: "", logo: "")
 
 

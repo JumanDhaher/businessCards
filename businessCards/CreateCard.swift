@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
-
+import PhotosUI
 struct CreateCard: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-     
+    @State var selecetedPhoto : PhotosPickerItem?
+    @State var selectedPhotoData: Data?
     @State private var showImagePicker = false
     @State private var name: String = ""
     @State private var email: String = ""
@@ -117,6 +118,29 @@ struct CreateCard: View {
                          .cornerRadius(8)
                          .foregroundColor(.white)
                     
+                    Section{
+                        if let imageData = selectedPhotoData,
+                           let uiImage = UIImage(data: imageData){
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100,height: 100)
+                        }
+                        PhotosPicker(selection: $selecetedPhoto, matching: .images, photoLibrary: .shared()){
+                            Label("Add image", systemImage: "photo")
+                        }
+//                        if selectedPhotoData != nil{
+//                            Button(role: .destructive){
+//                                withAnimation{
+//                                    selecetedPhoto = nil
+//                                    selectedPhotoData = nil
+//                                }
+//                            }Label:{
+//                                Label("Remove Image", systemImage: "xmark")
+//                            }
+//                        }
+                            
+                    }
                     
                     NavigationLink {
                      let card = BusinessCards(
