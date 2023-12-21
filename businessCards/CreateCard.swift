@@ -117,23 +117,19 @@ struct CreateCard: View {
                          .cornerRadius(8)
                          .foregroundColor(.white)
                     
-                    Button(action: {
-                            let card = BusinessCards(
-                                cardDesginID:1,
-                                cardColor: "",
-                                name: name, email: email, phoneNumber: phoneNumber, role: role, address: address, descriptions: descriptions,
-                                instagram: instagram,x: x,
-                                website: website, logo: logo)
-                                modelContext.insert(card)
-                                   do {
-                                       try modelContext.save()
-                                       presentationMode.wrappedValue.dismiss()
-                                   } catch {
-                                       print(error.localizedDescription)
-                                   }
-                               }, label: {
-                                   Text("Save").frame(width: 355,height: 40, alignment: .center).foregroundColor(.white).background(.darkpurple).cornerRadius(12).shadow(radius: 20, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/,y: 10)
-                               })
+                    
+                    NavigationLink {
+                     let card = BusinessCards(
+                            cardDesginID:1,
+                            cardColor: "",
+                            name: name, email: email, phoneNumber: phoneNumber, role: role, address: address, descriptions: descriptions,
+                            instagram: instagram,x: x,
+                            website: website, logo: logo)
+                        
+                        CardColorPage(card: card)
+                    } label: {
+                        Text("Next").frame(width: 355,height: 40, alignment: .center).foregroundColor(.white).background(.darkpurple).cornerRadius(12).shadow(radius: 20, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/,y: 10)
+                    }
                     
                 }
                 .padding()
@@ -144,6 +140,6 @@ struct CreateCard: View {
         }
     }
 
-#Preview {
-    CreateCard()
-}
+//#Preview {
+//    CreateCard()
+//}
