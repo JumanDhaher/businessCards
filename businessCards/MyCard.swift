@@ -11,7 +11,8 @@ import SwiftData
 struct MyCard: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \BusinessCards.id, order: .forward, animation: .smooth) var cards: [BusinessCards]
-      
+    @State private var colorSelect: Color = .red
+
     var body: some View {
         ScrollView{
             if cards.isEmpty {
@@ -26,19 +27,19 @@ struct MyCard: View {
                     } label: {
                         ZStack(alignment: .leading) {
                             if(card.cardDesginID == 1){
-                               Card1(card: card)
+                               Card1(card: card, colorSelect: $colorSelect)
                                     .frame(width: 343, height: 200)
                                     .padding()
                             }else if(card.cardDesginID == 2){
-                                Card2(card: card)
+                                Card2(card: card,colorSelect: $colorSelect)
                                     .frame(width: 343, height: 200)
                                     .padding()
                             }else if(card.cardDesginID == 3){
-                                Card3(card: card)
+                                Card3(card: card,colorSelect: $colorSelect)
                             }else if(card.cardDesginID == 4){
-                                Card4(card: card)
+                                Card4(card: card,colorSelect: $colorSelect)
                             }else if(card.cardDesginID == 5){
-                                Card5(card: card)
+                                Card5(card: card,colorSelect: $colorSelect)
                             }
                             Button("Delete", role: .destructive) {
                                 modelContext.delete(card)
