@@ -26,6 +26,7 @@ struct MyCard: View {
                     } label: {
                         ZStack(alignment: .leading) {
                             if(card.cardDesginID == 1){
+                                
                                 Card1(card: card)
                                     .frame(width: 343, height: 200)
                                     .padding()

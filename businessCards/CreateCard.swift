@@ -165,6 +165,6 @@ struct CreateCard: View {
         }
     }
 
-//#Preview {
-//    CreateCard()
-//}
+#Preview {
+    CreateCard()
+}
