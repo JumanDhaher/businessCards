@@ -11,7 +11,8 @@ import SwiftData
 struct CardColorPage: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+
+    @State private var isShowingDashboardView = false
     @State private var selectedCard: Int = 1
     @State private var colorSelect: String = "darkpurple"
    // @State var card: BusinessCards
@@ -129,13 +130,16 @@ struct CardColorPage: View {
                                 modelContext.insert(card)
                                    do {
                                        try modelContext.save()
-                                       presentationMode.wrappedValue.dismiss()
+                                       //presentationMode.wrappedValue.dismiss()
+                                       isShowingDashboardView = true
+
                                    } catch {
                                        print(error.localizedDescription)
                                    }
                                }, label: {
-                                   Text("Next").frame(width: 355,height: 40, alignment: .center).foregroundColor(.white).background(.darkpurple).cornerRadius(12).shadow(radius: 20, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/,y: 10)
-                               })
+                                   Text("Done").frame(width: 355,height: 40, alignment: .center).foregroundColor(.white).background(.darkpurple).cornerRadius(12).shadow(radius: 20, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/,y: 10)
+                               }).navigationDestination(isPresented: $isShowingDashboardView, destination: { MyCard()})
+
                 }
                 .padding()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)

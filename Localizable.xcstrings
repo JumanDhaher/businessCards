@@ -78,6 +78,9 @@
         }
       }
     },
+    "Done" : {
+
+    },
     "Edit Card" : {
       "extractionState" : "manual",
       "localizations" : {

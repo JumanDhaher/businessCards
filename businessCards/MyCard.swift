@@ -53,7 +53,7 @@ struct MyCard: View {
                 }
             }
         } .frame(maxWidth: .infinity, maxHeight: .infinity).background(.back1)
-            .navigationTitle("My Card")
+            .navigationTitle("My Card").navigationBarBackButtonHidden()
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {

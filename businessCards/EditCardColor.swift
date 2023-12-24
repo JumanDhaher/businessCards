@@ -14,7 +14,8 @@ struct EditCardColor: View {
         @State private var selectedCard: Int = 1
         @State private var colorSelect: String = "darkpurple"
         //@State var card: BusinessCards
-    @State var card = BusinessCards(cardDesginID: 1, cardColor: "", name: "", email: "", phoneNumber: "", role: "", address: "", descriptions: "", instagram: "", x: "", website: "", logo: Data())
+        @State var card = BusinessCards(cardDesginID: 1, cardColor: "", name: "", email: "", phoneNumber: "", role: "", address: "", descriptions: "", instagram: "", x: "", website: "", logo: Data())
+        @State private var isShowingDashboardView = false
 
         let colorPalet = ["darkpurple", "darkgray","cardcolor"]
         var body: some View {
@@ -122,12 +123,13 @@ struct EditCardColor: View {
                             do {
                                 try modelContext.save()
                                 presentationMode.wrappedValue.dismiss()
+                                isShowingDashboardView = true
                             } catch {
                                 print(error.localizedDescription)
                             }
                         }, label: {
                             Text("Update").frame(width: 355,height: 40, alignment: .center).foregroundColor(.white).background(.darkpurple).cornerRadius(12).shadow(radius: 20, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/,y: 10)
-                        })
+                        }).navigationDestination(isPresented: $isShowingDashboardView, destination: { MyCard()})
                     
                     }
                     .padding()
