@@ -53,13 +53,15 @@ struct Card1: View {
                 //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
                 .frame(width: 343, height: 200)
                 .padding()
-            VStack{
-                Image(uiImage: UIImage(data: card.logo!)!)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 100,height: 100)
-                Text(card.name)
-                Text(card.descriptions)
+            if(card.logo != nil){
+                VStack{
+                    Image(uiImage: UIImage(data: card.logo!)!)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100,height: 100)
+                    Text(card.name)
+                    Text(card.descriptions)
+                }
             }
             Trapezoid()
                 .fill(Color(card.cardColor))
