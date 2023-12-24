@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		394829B62B3805F30067906E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 394829B52B3805F30067906E /* Localizable.xcstrings */; };
 		395CBC5C2B31D1850069B822 /* CreateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395CBC5B2B31D1850069B822 /* CreateCard.swift */; };
 		39EDF20F2B32EECF00731344 /* cardColorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDF20E2B32EECF00731344 /* cardColorPage.swift */; };
 		39F80D892B317A470094D53C /* MyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F80D882B317A470094D53C /* MyCard.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		394829B52B3805F30067906E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		395CBC5B2B31D1850069B822 /* CreateCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCard.swift; sourceTree = "<group>"; };
 		39EDF20E2B32EECF00731344 /* cardColorPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = cardColorPage.swift; path = ../cardColorPage.swift; sourceTree = "<group>"; };
 		39F80D882B317A470094D53C /* MyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCard.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 		6FF337332B303D29001D177D = {
 			isa = PBXGroup;
 			children = (
+				394829B52B3805F30067906E /* Localizable.xcstrings */,
 				6FF3373E2B303D29001D177D /* businessCards */,
 				6FF3373D2B303D29001D177D /* Products */,
 				39EDF20D2B32EE4500731344 /* Recovered References */,
@@ -144,6 +147,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 6FF337332B303D29001D177D;
 			productRefGroup = 6FF3373D2B303D29001D177D /* Products */;
@@ -162,6 +166,7 @@
 			files = (
 				6FF337472B303D2A001D177D /* Preview Assets.xcassets in Resources */,
 				6FF337442B303D2A001D177D /* Assets.xcassets in Resources */,
+				394829B62B3805F30067906E /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

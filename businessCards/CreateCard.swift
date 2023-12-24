@@ -100,7 +100,7 @@ struct CreateCard: View {
                         .overlay(RoundedRectangle(cornerRadius: 6.0).strokeBorder(Color.gray, style: StrokeStyle(lineWidth: 1.0)))
                         .opacity(0.6)
                     
-                    Text("Brand Logo")
+                    Text("Logo")
                         .font(.title2)
                     HStack{
                         Image(systemName: "photo")
