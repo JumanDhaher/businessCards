@@ -191,6 +191,7 @@
       }
     },
     "image" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {

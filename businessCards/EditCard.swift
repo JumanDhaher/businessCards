@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
-
+import PhotosUI
 struct EditCard: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var card: BusinessCards
+    //@State var card: BusinessCards
     @State private var showImagePicker = false
-
+    @State var card = BusinessCards(cardDesginID: 1, cardColor: "", name: "", email: "", phoneNumber: "", role: "", address: "", descriptions: "", instagram: "", x: "", website: "", logo: Data())
+    @State var selecetedPhoto : PhotosPickerItem?
     var body: some View {
         ScrollView{
             VStack(alignment: .leading, spacing: 15){
@@ -91,32 +92,40 @@ struct EditCard: View {
                 
                 Text("Brand Logo")
                     .font(.title2)
-                HStack{
-                    Image(systemName: "photo")
-                        .foregroundColor(Color.white)
-                    Button("image") {
-                        
-                        showImagePicker = true
-                        
-                    }
+                Section{
+                if let logoData = card.logo,
+                let uiImage = UIImage(data: logoData){
+                Image(uiImage: uiImage)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100,height: 100)
                 }
-                .frame(width: 140, height: 45)
-                .background(.darkpurple)
-                .opacity(0.7)
-                .cornerRadius(8)
-                .foregroundColor(.white)
+                PhotosPicker(selection: $selecetedPhoto, matching: .images, photoLibrary: .shared()){
+                Label("Add image", systemImage: "photo")
+
+                                        //
+                                        
+                                    }
+                                    .frame(width: 140, height: 45)
+                                                             .background(.darkpurple)
+                                                             .opacity(0.7)
+                                                             .cornerRadius(8)
+                                                             .foregroundColor(.white)
+                   
+                                }
+                                
+                                .task (id: selecetedPhoto){
+                                    if let data = try? await selecetedPhoto?.loadTransferable(type: Data.self){
+                                        card.logo = data
+                                    }
+                                }
+
                 
-                Button(action: {
-                    do {
-                        try modelContext.save()
-                        presentationMode.wrappedValue.dismiss()
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                }, label: {
-                    Text("Update").frame(width: 355,height: 40, alignment: .center).foregroundColor(.white).background(.darkpurple).cornerRadius(12).shadow(radius: 20, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/,y: 10)
-                })
-                
+                NavigationLink {
+                    EditCardColor(card: card)
+                } label: {
+                    Text("Next").frame(width: 355,height: 40, alignment: .center).foregroundColor(.white).background(.darkpurple).cornerRadius(12).shadow(radius: 20, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/,y: 10)
+                }
             }
             .padding()
         }

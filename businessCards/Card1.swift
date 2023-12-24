@@ -54,6 +54,10 @@ struct Card1: View {
                 .frame(width: 343, height: 200)
                 .padding()
             VStack{
+                Image(uiImage: UIImage(data: card.logo!)!)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100,height: 100)
                 Text(card.name)
                 Text(card.descriptions)
             }

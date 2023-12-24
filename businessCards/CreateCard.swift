@@ -23,6 +23,8 @@ struct CreateCard: View {
     @State private var instagram: String = ""
     @State private var x: String = ""
     @State private var website: String = ""
+    
+    @State var card = BusinessCards(cardDesginID: 1, cardColor: "", name: "", email: "", phoneNumber: "", role: "", address: "", descriptions: "", instagram: "", x: "", website: "", logo: Data())
 
     var body: some View {
             ScrollView{
@@ -102,54 +104,41 @@ struct CreateCard: View {
                     
                     Text("Logo")
                         .font(.title2)
-                    HStack{
-                        Image(systemName: "photo")
-                            .foregroundColor(Color.white)
-                        Button("image") {
-                            
-                            showImagePicker = true
-                            
-                        }
-                    }
-                    .frame(width: 140, height: 45)
-                         .background(.darkpurple)
-                         .opacity(0.7)
-                         .cornerRadius(8)
-                         .foregroundColor(.white)
                     
                     Section{
-                        if let imageData = selectedPhotoData,
-                           let uiImage = UIImage(data: imageData){
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 100,height: 100)
-                        }
-                        PhotosPicker(selection: $selecetedPhoto, matching: .images, photoLibrary: .shared()){
-                            Label("Add image", systemImage: "photo")
-                        }
-                        
-            
-//                        if selectedPhotoData != nil{
-//                            Button(role: .destructive){
-//                                withAnimation{
-//                                    selecetedPhoto = nil
-//                                    selectedPhotoData = nil
-//                                }
-//                            }Label:{
-//                                Label("Remove Image", systemImage: "xmark")
-//                            }
-//                        }
-                            
+                    if let logoData = card.logo,
+                    let uiImage = UIImage(data: logoData){
+                    Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100,height: 100)
                     }
-                    
+                    PhotosPicker(selection: $selecetedPhoto, matching: .images, photoLibrary: .shared()){
+                    Label("Add image", systemImage: "photo")
+
+                                            //
+                                            
+                                        }
+                                        .frame(width: 140, height: 45)
+                                                                 .background(.darkpurple)
+                                                                 .opacity(0.7)
+                                                                 .cornerRadius(8)
+                                                                 .foregroundColor(.white)
+                       
+                                    }
+                                    
+                                    .task (id: selecetedPhoto){
+                                        if let data = try? await selecetedPhoto?.loadTransferable(type: Data.self){
+                                            card.logo = data
+                                        }
+                                    }
                     NavigationLink {
                      let card = BusinessCards(
-                            cardDesginID:1,
+                            cardDesginID : 1,
                             cardColor: "",
                             name: name, email: email, phoneNumber: phoneNumber, role: role, address: address, descriptions: descriptions,
                             instagram: instagram,x: x,
-                            website: website, logo: logo)
+                            website: website, logo: card.logo)
                         
                         CardColorPage(card: card)
                     } label: {

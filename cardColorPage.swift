@@ -14,8 +14,9 @@ struct CardColorPage: View {
     
     @State private var selectedCard: Int = 1
     @State private var colorSelect: String = "darkpurple"
-    @State var card: BusinessCards
-
+   // @State var card: BusinessCards
+    @State var card = BusinessCards(cardDesginID: 1, cardColor: "", name: "", email: "", phoneNumber: "", role: "", address: "", descriptions: "", instagram: "", x: "", website: "", logo: Data())
+    
     let colorPalet = ["darkpurple", "darkgray","cardcolor"]
     var body: some View {
             NavigationView {
@@ -41,28 +42,62 @@ struct CardColorPage: View {
                             }
                         }
                     }
-                    if selectedCard == 1 {
-                          Card1(card: card )
-                            .frame(width: 343, height: 200)
-                            .padding()
-                    } else if selectedCard == 2 {
-                        Card2(card: card)
-                            .frame(width: 343, height: 200)
-                            .padding()
-                    } else if selectedCard == 3 {
-                        Card3(card: card)
-                    } else if selectedCard == 4 {
-                        Card4(card: card)
-                    } else if selectedCard == 5 {
-                        Card5(card: card)
+                    if(colorSelect == "darkpurple"){
+                        if selectedCard == 1 {
+                            Card1(card: card )
+                                .frame(width: 343, height: 200)
+                                .padding()
+                        } else if selectedCard == 2 {
+                            Card2(card: card)
+                                .frame(width: 343, height: 200)
+                                .padding()
+                        } else if selectedCard == 3 {
+                            Card3(card: card)
+                        } else if selectedCard == 4 {
+                            Card4(card: card)
+                        } else if selectedCard == 5 {
+                            Card5(card: card)
+                        }
+                    }else if(colorSelect == "darkgray"){
+                        if selectedCard == 1 {
+                            Card1(card: card )
+                                .frame(width: 343, height: 200)
+                                .padding()
+                        } else if selectedCard == 2 {
+                            Card2(card: card)
+                                .frame(width: 343, height: 200)
+                                .padding()
+                        } else if selectedCard == 3 {
+                            Card3(card: card)
+                        } else if selectedCard == 4 {
+                            Card4(card: card)
+                        } else if selectedCard == 5 {
+                            Card5(card: card)
+                        }
+                    }else if(colorSelect == "cardcolor"){
+                        if selectedCard == 1 {
+                            Card1(card: card )
+                                .frame(width: 343, height: 200)
+                                .padding()
+                        } else if selectedCard == 2 {
+                            Card2(card: card)
+                                .frame(width: 343, height: 200)
+                                .padding()
+                        } else if selectedCard == 3 {
+                            Card3(card: card)
+                        } else if selectedCard == 4 {
+                            Card4(card: card)
+                        } else if selectedCard == 5 {
+                            Card5(card: card)
+                        }
                     }
+       
 
                     ScrollView(.horizontal) {
                         HStack {
                             ForEach(1..<6) { cardNumber in
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 8)
-                                    
                                         .fill(Color.gray)
                                         .frame(width: 88, height: 52)
                                         .onTapGesture {
@@ -99,7 +134,7 @@ struct CardColorPage: View {
                                        print(error.localizedDescription)
                                    }
                                }, label: {
-                                   Text("Save").frame(width: 355,height: 40, alignment: .center).foregroundColor(.white).background(.darkpurple).cornerRadius(12).shadow(radius: 20, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/,y: 10)
+                                   Text("Next").frame(width: 355,height: 40, alignment: .center).foregroundColor(.white).background(.darkpurple).cornerRadius(12).shadow(radius: 20, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/,y: 10)
                                })
                 }
                 .padding()
