@@ -7,18 +7,48 @@
 
 import SwiftUI
 import PassKit
+struct ShareSheet: UIViewControllerRepresentable {
+    
+    var items : [Any]
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        
+        let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        return controller
+    }
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
+    }
+        
+    }
+
+class shareVM: ObservableObject{
+    @Published var items : [Any] = []
+
+}
 
 struct SheetView: View {
-    @State var card: BusinessCards    
+    @State var card: BusinessCards 
+    @StateObject var vm = shareVM()
+    @State var sheet = false
     var body: some View {
         VStack{
             HStack{
                Text("Card")
                 Spacer()
+                Button(action: {
+                    
+                    vm.items.removeAll()
+                    vm.items.append(UIImage(named: "xapp")!)
+                    
+                    sheet.toggle()
+                    
+                }, label: {
+                    Image(systemName: "square.and.arrow.up")
+                })
                 
-                Image(systemName: "square.and.arrow.up")
             }.padding()
-        
+                .sheet(isPresented: $sheet, content: {
+                    ShareSheet(items: vm.items)
+                })
             if(card.cardDesginID == 1){
                 Card1(card: card)
                     .frame(width: 343, height: 200)

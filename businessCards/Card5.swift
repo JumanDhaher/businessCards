@@ -13,6 +13,7 @@ struct Card5: View {
         ZStack{
             
             RoundedRectangle(cornerRadius: 0)
+                .fill(.gray)
                 .fill(Color(card.cardColor))
             //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
                 .frame(width: 343, height: 200)
