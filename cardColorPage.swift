@@ -18,7 +18,7 @@ struct CardColorPage: View {
    // @State var card: BusinessCards
     @State var card = BusinessCards(cardDesginID: 1, cardColor: "", name: "", email: "", phoneNumber: "", role: "", address: "", descriptions: "", instagram: "", x: "", website: "", logo: Data())
     
-    let colorPalet = ["darkpurple", "darkgray","cardcolor"]
+    let colorPalet = ["darkpurple", "darkgray","cardcolor", "gold1", "darkred", "lightblue", "lightgreen"]
     var body: some View {
             NavigationView {
                 VStack {
@@ -76,6 +76,70 @@ struct CardColorPage: View {
                             Card5(card: card)
                         }
                     }else if(colorSelect == "cardcolor"){
+                        if selectedCard == 1 {
+                            Card1(card: card )
+                                .frame(width: 343, height: 200)
+                                .padding()
+                        } else if selectedCard == 2 {
+                            Card2(card: card)
+                                .frame(width: 343, height: 200)
+                                .padding()
+                        } else if selectedCard == 3 {
+                            Card3(card: card)
+                        } else if selectedCard == 4 {
+                            Card4(card: card)
+                        } else if selectedCard == 5 {
+                            Card5(card: card)
+                        }
+                    }else if(colorSelect == "darkred"){
+                        if selectedCard == 1 {
+                            Card1(card: card )
+                                .frame(width: 343, height: 200)
+                                .padding()
+                        } else if selectedCard == 2 {
+                            Card2(card: card)
+                                .frame(width: 343, height: 200)
+                                .padding()
+                        } else if selectedCard == 3 {
+                            Card3(card: card)
+                        } else if selectedCard == 4 {
+                            Card4(card: card)
+                        } else if selectedCard == 5 {
+                            Card5(card: card)
+                        }
+                    }else if(colorSelect == "lightblue"){
+                        if selectedCard == 1 {
+                            Card1(card: card )
+                                .frame(width: 343, height: 200)
+                                .padding()
+                        } else if selectedCard == 2 {
+                            Card2(card: card)
+                                .frame(width: 343, height: 200)
+                                .padding()
+                        } else if selectedCard == 3 {
+                            Card3(card: card)
+                        } else if selectedCard == 4 {
+                            Card4(card: card)
+                        } else if selectedCard == 5 {
+                            Card5(card: card)
+                        }
+                    }else if(colorSelect == "lightgreen"){
+                        if selectedCard == 1 {
+                            Card1(card: card )
+                                .frame(width: 343, height: 200)
+                                .padding()
+                        } else if selectedCard == 2 {
+                            Card2(card: card)
+                                .frame(width: 343, height: 200)
+                                .padding()
+                        } else if selectedCard == 3 {
+                            Card3(card: card)
+                        } else if selectedCard == 4 {
+                            Card4(card: card)
+                        } else if selectedCard == 5 {
+                            Card5(card: card)
+                        }
+                    }else if(colorSelect == "gold1"){
                         if selectedCard == 1 {
                             Card1(card: card )
                                 .frame(width: 343, height: 200)

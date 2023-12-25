@@ -115,6 +115,7 @@ struct CreateCard: View {
                     }
                     PhotosPicker(selection: $selecetedPhoto, matching: .images, photoLibrary: .shared()){
                     Label("Add image", systemImage: "photo")
+                            .font(.system(size: 20))
 
                                             //
                                             
