@@ -54,14 +54,85 @@ struct Card1: View {
                 .frame(width: 343, height: 200)
                 .padding()
             if(card.logo != nil){
-                VStack{
+                HStack{
+                
+                    VStack(alignment: .leading){
+                   
+                    Text(card.name)
+                        .font(.title3)
+                        .padding(.top , -20)
+                        .offset(x:12)
+                        Text(card.role)
+                            .font(.system(size: 15))
+                                .offset(x:14)
+
+                    Text(card.descriptions)
+                            .offset(x:12)
+                            
+                        HStack{
+                            Image(systemName:  "envelope")
+                                .resizable()
+                                .frame(width: 9, height: 9)
+                            Text(card.email )
+                            
+                        }
+                        
+                   
+                        HStack{
+                            Image(systemName:  "phone")
+                                .resizable()
+                                .frame(width: 9, height: 9)
+                            Text(card.phoneNumber )
+                            
+                        }
+                        .padding(.top, -6)
+                        HStack{
+                            Image(systemName:  "location")
+                                .resizable()
+                                .frame(width: 9, height: 9)
+                            Text(card.address )
+                           
+                        }
+                        .padding(.top, -6)
+                            
+                        
+                        HStack{
+                            Image("instagram")
+                                .resizable()
+                                .frame(width: 9, height: 9)
+                            Text(card.instagram)
+                            
+                        }
+                        .padding(.top, -6)
+                        HStack{
+                            Image("xapp")
+                                .resizable()
+                                .frame(width: 9, height: 9)
+                            Text(card.x)
+                            
+                        }
+                        .padding(.top, -6)
+                        
+                    
+                        
+                    
+                        
+                    
+                }
+                    
+                .font(.system(size: 10))
+                .foregroundColor(.black)
+                Spacer()
                     Image(uiImage: UIImage(data: card.logo!)!)
                         .resizable()
-                        .scaledToFit()
-                        .frame(width: 100,height: 100)
-                    Text(card.name)
-                    Text(card.descriptions)
-                }
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 90,height: 90)
+                        .clipShape(Circle())
+                        .offset(x: -19, y: 5)
+                        
+                        
+            }
+                .frame(width: 300, height: 50)
             }
             Trapezoid()
                 .fill(Color(card.cardColor))
