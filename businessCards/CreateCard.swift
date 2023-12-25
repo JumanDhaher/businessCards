@@ -94,13 +94,7 @@ struct CreateCard: View {
                         .overlay(RoundedRectangle(cornerRadius: 6.0).strokeBorder(Color.gray, style: StrokeStyle(lineWidth: 1.0)))
                         .opacity(0.6)
                     
-                    Text("Website")
-                        .font(.title2)
-                    TextField("Enter the website", text: $website)
-                        .padding(.leading)
-                        .frame(width: 370, height: 50)
-                        .overlay(RoundedRectangle(cornerRadius: 6.0).strokeBorder(Color.gray, style: StrokeStyle(lineWidth: 1.0)))
-                        .opacity(0.6)
+                    
                     
                     Text("Logo")
                         .font(.title2)
