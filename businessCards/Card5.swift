@@ -18,7 +18,7 @@ struct Card5: View {
             //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
                 .frame(width: 343, height: 200)
                 .padding()
-            if(card.logo != nil){
+            if(card.logo != nil && !card.logo!.isEmpty){
             HStack{
                 Image(uiImage: UIImage(data: card.logo!)!)
                     .resizable()
@@ -40,50 +40,57 @@ struct Card5: View {
 
                 Text(card.descriptions)
                         
-                        
-                    HStack{
-                        Image(systemName:  "envelope")
-                            .resizable()
-                            .frame(width: 9, height: 9)
-                        Text(card.email )
-                        
-                    }
+                    if(card.email != "" )
+                    {
+                        HStack{
+                            Image(systemName:  "envelope")
+                                .resizable()
+                                .frame(width: 9, height: 9)
+                            Text(card.email )
+                            
+                        }}
                     
-               
-                    HStack{
-                        Image(systemName:  "phone")
-                            .resizable()
-                            .frame(width: 9, height: 9)
-                        Text(card.phoneNumber )
-                        
+                    if(card.phoneNumber != "" )
+                    {
+                        HStack{
+                            Image(systemName:  "phone")
+                                .resizable()
+                                .frame(width: 9, height: 9)
+                            Text(card.phoneNumber )
+                            
+                        }
+                        .padding(.top, -6)}
+                    if(card.address != "" )
+                    {
+                        HStack{
+                            Image(systemName:  "location")
+                                .resizable()
+                                .frame(width: 9, height: 9)
+                            Text(card.address )
+                            
+                        }
+                        .padding(.top, -6)
                     }
-                    .padding(.top, -6)
-                    HStack{
-                        Image(systemName:  "location")
-                            .resizable()
-                            .frame(width: 9, height: 9)
-                        Text(card.address )
-                       
-                    }
-                    .padding(.top, -6)
-                        
-                    
-                    HStack{
-                        Image("instagram")
-                            .resizable()
-                            .frame(width: 9, height: 9)
-                        Text(card.instagram)
-                        
-                    }
-                    .padding(.top, -6)
-                    HStack{
-                        Image("xapp")
-                            .resizable()
-                            .frame(width: 9, height: 9)
-                        Text(card.x)
-                        
-                    }
-                    .padding(.top, -6)
+                    if(card.instagram != "" )
+                    {
+                        HStack{
+                            Image("instagram")
+                                .resizable()
+                                .frame(width: 9, height: 9)
+                            Text(card.instagram)
+                            
+                        }
+                        .padding(.top, -6)}
+                    if(card.x != "" )
+                    {
+                        HStack{
+                            Image("xapp")
+                                .resizable()
+                                .frame(width: 9, height: 9)
+                            Text(card.x)
+                            
+                        }
+                        .padding(.top, -6)}
                     
                 
                     

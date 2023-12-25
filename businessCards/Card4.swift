@@ -22,7 +22,7 @@ struct Card4: View {
                 .frame(width: 140, height: 200)
                 .padding(.leading, -172)
             
-            if(card.logo != nil){
+            if(card.logo != nil && !card.logo!.isEmpty){
                 HStack{
                     Image(uiImage: UIImage(data: card.logo!)!)
                         .resizable()
@@ -42,53 +42,60 @@ struct Card4: View {
 
                     Text(card.descriptions)
                             
+                        if(card.email != "" )
+                        {
+                            HStack{
+                                Image(systemName:  "envelope")
+                                    .resizable()
+                                    .frame(width: 9, height: 9)
+                                Text(card.email )
+                                
+                            }
+                        }
+                        if(card.phoneNumber != "" )
+                        {
+                            HStack{
+                                Image(systemName:  "phone")
+                                    .resizable()
+                                    .frame(width: 9, height: 9)
+                                Text(card.phoneNumber )
+                                
+                            }
+                            .padding(.top, -6)}
+                        if(card.address != "" ){
                             
-                        HStack{
-                            Image(systemName:  "envelope")
-                                .resizable()
-                                .frame(width: 9, height: 9)
-                            Text(card.email )
+                            HStack{
+                                Image(systemName:  "location")
+                                    .resizable()
+                                    .frame(width: 9, height: 9)
+                                Text(card.address )
+                                
+                            }
+                            .padding(.top, -6)
+                        }
+                        if(card.instagram != "" )
+                        {
+                            HStack{
+                                Image("instagram")
+                                    .resizable()
+                                    .frame(width: 9, height: 9)
+                                Text(card.instagram)
+                                
+                            }
+                            .padding(.top, -6)}
+                        if(card.x != "" ){
+                            
+                            HStack{
+                                Image("xapp")
+                                    .resizable()
+                                    .frame(width: 9, height: 9)
+                                Text(card.x)
+                                
+                            }
+                            .padding(.top, -6)
+                            
                             
                         }
-                        
-                   
-                        HStack{
-                            Image(systemName:  "phone")
-                                .resizable()
-                                .frame(width: 9, height: 9)
-                            Text(card.phoneNumber )
-                            
-                        }
-                        .padding(.top, -6)
-                        HStack{
-                            Image(systemName:  "location")
-                                .resizable()
-                                .frame(width: 9, height: 9)
-                            Text(card.address )
-                           
-                        }
-                        .padding(.top, -6)
-                            
-                        
-                        HStack{
-                            Image("instagram")
-                                .resizable()
-                                .frame(width: 9, height: 9)
-                            Text(card.instagram)
-                            
-                        }
-                        .padding(.top, -6)
-                        HStack{
-                            Image("xapp")
-                                .resizable()
-                                .frame(width: 9, height: 9)
-                            Text(card.x)
-                            
-                        }
-                        .padding(.top, -6)
-                        
-                    
-                        
                     
                         
                     

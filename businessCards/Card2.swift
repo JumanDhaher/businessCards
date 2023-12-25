@@ -53,52 +53,59 @@ struct Card2: View {
 
                     Text(card.descriptions)
                             
-                            
-                        HStack{
-                            Image(systemName:  "envelope")
-                                .resizable()
-                                .frame(width: 9, height: 9)
-                            Text(card.email )
-                            
+                        if(card.email != "" ){
+                            HStack{
+                                Image(systemName:  "envelope")
+                                    .resizable()
+                                    .frame(width: 9, height: 9)
+                                Text(card.email )
+                                
+                            }
                         }
                         
-                   
-                        HStack{
-                            Image(systemName:  "phone")
-                                .resizable()
-                                .frame(width: 9, height: 9)
-                            Text(card.phoneNumber )
-                            
+                        if(card.phoneNumber != "" ){
+                            HStack{
+                                Image(systemName:  "phone")
+                                    .resizable()
+                                    .frame(width: 9, height: 9)
+                                Text(card.phoneNumber )
+                                
+                            }
+                            .padding(.top, -6)
                         }
-                        .padding(.top, -6)
-                        HStack{
-                            Image(systemName:  "location")
-                                .resizable()
-                                .frame(width: 9, height: 9)
-                            Text(card.address )
-                           
+                        if(card.address != "" ){
+                            HStack{
+                                Image(systemName:  "location")
+                                    .resizable()
+                                    .frame(width: 9, height: 9)
+                                Text(card.address )
+                                
+                            }
+                            .padding(.top, -6)
                         }
-                        .padding(.top, -6)
-                            
+                        if(card.instagram != "" )
+                        {
+                            HStack{
+                                Image("instagram")
+                                    .resizable()
+                                    .frame(width: 9, height: 9)
+                                Text(card.instagram)
+                                
+                            }
+                            .padding(.top, -6)
+                        }
                         
-                        HStack{
-                            Image("instagram")
-                                .resizable()
-                                .frame(width: 9, height: 9)
-                            Text(card.instagram)
+                        if(card.x != "" ){
                             
+                            HStack{
+                                Image("xapp")
+                                    .resizable()
+                                    .frame(width: 9, height: 9)
+                                Text(card.x)
+                                
+                            }
+                            .padding(.top, -6)
                         }
-                        .padding(.top, -6)
-                        HStack{
-                            Image("xapp")
-                                .resizable()
-                                .frame(width: 9, height: 9)
-                            Text(card.x)
-                            
-                        }
-                        .padding(.top, -6)
-                        
-                    
                         
                     
                         
@@ -108,14 +115,15 @@ struct Card2: View {
                 .font(.system(size: 10))
                 .foregroundColor(.black)
                 Spacer()
-                    Image(uiImage: UIImage(data: card.logo!)!)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 90,height: 90)
-                        .clipShape(Circle())
-                        .offset(x: -50, y: -10)
+                    if(card.logo != nil && !card.logo!.isEmpty){
+                        Image(uiImage: UIImage(data: card.logo!)!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 90,height: 90)
+                            .clipShape(Circle())
+                            .offset(x: -50, y: -10)
                         //.offset(x: 1, y: -50)
-                        
+                    }
                         
             }
                 .frame(width: 300, height: 50)
