@@ -37,7 +37,6 @@
 		39F80D902B31A6640094D53C /* Card3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card3.swift; sourceTree = "<group>"; };
 		39F80D922B31A91A0094D53C /* Card4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card4.swift; sourceTree = "<group>"; };
 		39F80D942B31AA9E0094D53C /* Card5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card5.swift; sourceTree = "<group>"; };
-		6F625E582B39E248000A5BE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6F6C0BB92B32C69E0005357F /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		6F6C0BBB2B32D15C0005357F /* EditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCard.swift; sourceTree = "<group>"; };
 		6F9EA7442B381529002308A2 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
@@ -87,7 +86,6 @@
 		6FF3373E2B303D29001D177D /* businessCards */ = {
 			isa = PBXGroup;
 			children = (
-				6F625E582B39E248000A5BE2 /* Info.plist */,
 				6FF3373F2B303D29001D177D /* businessCardsApp.swift */,
 				39F80D882B317A470094D53C /* MyCard.swift */,
 				395CBC5B2B31D1850069B822 /* CreateCard.swift */,
