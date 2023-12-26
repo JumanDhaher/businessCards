@@ -4,6 +4,9 @@
     "*" : {
 
     },
+    "Add a new card" : {
+
+    },
     "Add image" : {
       "localizations" : {
         "ar" : {
@@ -79,6 +82,9 @@
       }
     },
     "Done" : {
+
+    },
+    "Double tap to access" : {
 
     },
     "Edit Card" : {
