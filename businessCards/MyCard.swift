@@ -18,6 +18,9 @@ struct MyCard: View {
             if cards.isEmpty {
                 NavigationLink(destination: CreateCard(), label:{
                     Text("Press '+' to add new cards").foregroundColor(.darkpurple)
+                        .accessibilityLabel("Press '+' to add new cards")
+                        .accessibilityAddTraits(.isButton)
+                        .accessibilityHint("Double tap to access")
                 })
             }else {
                 ForEach( self.cards, id: \.self) {
@@ -61,6 +64,9 @@ struct MyCard: View {
                     } label: {
                         Image(systemName: "plus.app")
                             .foregroundColor(.darkpurple)
+                            .accessibilityLabel("Add a new card")
+                            .accessibilityAddTraits(.isButton)
+                            .accessibilityHint("Double tap to access")
                     }
                 }
             }
