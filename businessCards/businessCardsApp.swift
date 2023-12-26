@@ -13,7 +13,7 @@ struct ContentView: App {
     var body: some Scene {
         WindowGroup {
         NavigationStack {
-           MyCard()
+           Splash()
           }
         }.modelContainer(for: [BusinessCards.self])
     }
